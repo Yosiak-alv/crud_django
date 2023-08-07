@@ -1,0 +1,32 @@
+{% load static%} <!--diciendo que cargara estatico-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<div class="container p-5">
+
+    <a href="{%url 'aplication:create'%}" class="btn btn-outline-dark mt-5">Crear Nuevo</a>
+    <table class="table">
+        <thead class="text-center">
+          <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Especie</th>
+            <th scope="col">Opciones</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+            {% for animal in animales %}
+            <tr>
+           
+                <th >{{animal.id}}</th>
+                <td>{{animal.name}}</td>
+                <td>{{animal.especie}}</td>
+                <td>
+                    <a href="{%url 'aplication:detail' animal.id%}" class="btn btn-danger mt-1">Ver Mas</a>
+                    <a href="{%url 'aplication:edit' animal.id%}" class="btn btn-success mt-1">Editar</a>
+                    <a href="{%url 'aplication:delete' animal.id%}" class="btn btn-primary mt-1">Eliminar</a>
+                </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
